@@ -1,5 +1,5 @@
-Package: fishstat
-Version: 2025.1.0.0
+Package: fishstat25
+Version: 1.0.0
 Date: 2025-04-11
 Title: Global Fishery and Aquaculture Statistics
 Authors@R: c(person("Arni", "Magnusson", role=c("aut","cre"), email="thisisarni@gmail.com"),

@@ -41,7 +41,7 @@
 #' \code{\link{measure}}, \code{\link{source}}, \code{\link{species}}, and
 #' \code{\link{status}} are lookup tables.
 #'
-#' \code{\link{fishstat-package}} gives an overview of the package.
+#' \code{\link{fishstat25-package}} gives an overview of the package.
 #'
 #' @examples
 #' head(measure, 3)
