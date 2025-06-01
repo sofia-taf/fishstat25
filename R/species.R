@@ -86,5 +86,12 @@
 #' # Examine one species
 #' print.simple.list(species[species$species_name == "Atlantic cod",])
 #' print.simple.list(species[species$species == "YFT",])
+#'
+#' # English name when available, otherwise scientific name (FishStatJ style)
+#' species$species_alt <- ifelse(species$species_name != "",
+#'                               species$species_name,
+#'                               paste0("[", species$scientific, "]"))
+#' species[grep("Hoplias", species$scientific),
+#'         c("species_name", "scientific", "species_alt")]
 
 NA
