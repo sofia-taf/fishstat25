@@ -61,7 +61,7 @@
 #' aggregate(value~tolower(major), aqua, function(x) round(sum(x/1e6)))
 #'
 #' # Annual aquaculture production of all animals
-#' x <- aggregate(value~year, aqua, sum, subset=yearbook != "Aquatic plants")
+#' x <- aggregate(value~year, aqua, sum, subset=yearbook!="Aquatic plants")
 #' plot(value/1e6~year, x, ylab="million tonnes", type="l")
 #' title(main="Aquaculture production: All animals")
 
