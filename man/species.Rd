@@ -40,29 +40,29 @@ to facilitate quick exploration and plotting in R.
 \examples{
 head(species, 3)
 
-# Select 'species' entries that have non-zero production
+# Select species entries that have non-zero production
 nonzero <- unique(production$species[production$value > 0])
 species.nz <- species[species$species \%in\% nonzero,]
 length(species.nz$species)
 
-# Only 'species', 'scientific', 'major', and 'taxonomic' are always defined
+# Only species, scientific, major, and taxonomic are always defined
 cbind(sapply(species, function(x) all(x != "")))
 
-# Plus 'isscaap' and 'yearbook' for non-zero production
+# Plus isscaap and yearbook for non-zero production
 cbind(sapply(species.nz, function(x) all(x != "")))
 
-# A variety of species are missing 'species_name', 'cpc_class', 'cpc_group'
+# A variety of species are missing species_name, cpc_class, cpc_group
 cbind(table(species.nz$major[species.nz$species_name == ""]))
 cbind(table(species.nz$major[species.nz$cpc_class == ""]))
 cbind(table(species.nz$major[species.nz$cpc_group == ""]))
 
-# Number of 'species' entries that have non-zero production by major taxa
+# Number of species entries that have non-zero production by major taxa
 cbind(table(species.nz$major))
 
 # Number of unique yearbook categories, major taxa, isscaap groups, etc.
 cbind(sapply(species.nz, function(x) length(unique(x))))
 
-# 'scientific' and 'species_name' entries are not unique
+# The scientific and species_name entries are not unique
 table(species.nz$scientific)[table(species.nz$scientific) > 1]
 table(species.nz$species_name)[table(species.nz$species_name) > 1]
 
