@@ -59,15 +59,15 @@ cbind(table(species.nz$major[species.nz$cpc_group == ""]))
 # Number of species entries that have non-zero production by major taxa
 cbind(table(species.nz$major))
 
+# By yearbook categories and major taxa
+table(species.nz$major, species.nz$yearbook)
+
 # Number of unique yearbook categories, major taxa, isscaap groups, etc.
 cbind(sapply(species.nz, function(x) length(unique(x))))
 
 # The scientific and species_name entries are not unique
 table(species.nz$scientific)[table(species.nz$scientific) > 1]
 table(species.nz$species_name)[table(species.nz$species_name) > 1]
-
-# Yearbook categories and major taxa
-t(table(species.nz$yearbook, species.nz$major))
 
 # Examine one species
 print.simple.list(species[species$species_name == "Atlantic cod",])
