@@ -75,13 +75,8 @@
 #' table(species.nz$scientific)[table(species.nz$scientific) > 1]
 #' table(species.nz$species_name)[table(species.nz$species_name) > 1]
 #'
-#' # A closer look at the yearbook categories
-#' cbind(table(species.nz$yearbook))  # now inspect the "other" species
-#' other <-
-#'   species.nz[species.nz$yearbook == "Other aquatic animals & products",]
-#' cbind(table(other$major))  # majority is mammals, what about the rest
-#' other <- other[other$major != "MAMMALIA",]
-#' cbind(table(other$isscaap))  # reptiles and inedible ornamental animals
+#' # Yearbook categories and major taxa
+#' t(table(species.nz$yearbook, species.nz$major))
 #'
 #' # Examine one species
 #' print.simple.list(species[species$species_name == "Atlantic cod",])
