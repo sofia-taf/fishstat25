@@ -51,14 +51,15 @@
 #'
 #' # Analyze production measured in tonnes
 #' prod <- production[production$measure == "Q_tlw" & production$value > 0,]
-#' prod <- merge(prod, species[c("species", "yearbook")])
+#'
+#' # Fast merge yearbook and inlandmarine columns
+#' prod$yearbook <- species$yearbook[match(prod$species, species$species)]
+#' prod$inlandmarine <- area$inlandmarine[match(prod$area, area$area)]
 #'
 #' # Select SOFIA species, excluding mammals, reptiles, and plants
-#' prod <- prod[prod$yearbook ==
-#'              "Aquatic animals (Fish, crustaceans and molluscs, etc.)",]
+#' prod <- prod[grep("Fish, crustaceans and molluscs", prod$yearbook, fixed=TRUE),]
 #'
 #' # Determine origin
-#' prod <- merge(prod, area[c("area", "inlandmarine")])
 #' prod$origin <- ifelse(prod$source == "CAPTURE", "Capture", "Aquaculture")
 #' prod$w <- ifelse(prod$inlandmarine == "Marine areas", "marine", "inland")
 #' prod$origin <- paste0(prod$origin, " (", prod$w, ")")

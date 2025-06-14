@@ -61,9 +61,9 @@
 #' x <- aggregate(value~tolower(major), cap, function(x) round(sum(x/1e6)))
 #' x[x$value > 0,]
 #'
-#' # Annual capture production of all aquatic animals
-#' x <- aggregate(value~year, cap, sum)
+#' # Annual capture production of all animals
+#' x <- aggregate(value~year, cap, sum, subset=major!="PLANTAE AQUATICAE")
 #' plot(value/1e6~year, x, ylim=c(0,105), ylab="million tonnes", type="l")
-#' title(main="Capture production: All")
+#' title(main="Capture production: All animals")
 
 NA
