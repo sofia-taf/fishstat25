@@ -59,7 +59,7 @@ cbind(table(species.nz$major[species.nz$cpc_group == ""]))
 # Number of 'species' entries that have non-zero production by major taxa
 cbind(table(species.nz$major))
 
-# 7 major taxa, 50 isscaap groups, and 3 yearbook categories
+# Number of unique yearbook categories, major taxa, isscaap groups, etc.
 cbind(sapply(species.nz, function(x) length(unique(x))))
 
 # 'scientific' and 'species_name' entries are not unique
