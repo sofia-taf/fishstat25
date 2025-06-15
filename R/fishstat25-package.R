@@ -5,10 +5,9 @@
 #' @title Global Fishery and Aquaculture Statistics
 #'
 #' @description
-#' The Food and Agriculture Organization of the United Nations (FAO)
-#' \href{https://www.fao.org/fishery/en/fishstat}{FishStat} database is the
-#' leading source of global fishery and aquaculture statistics and provides
-#' unique information for sector analysis and monitoring.
+#' The Food and Agriculture Organization of the United Nations (FAO) FishStat
+#' database is the leading source of global fishery and aquaculture statistics
+#' and provides unique information for sector analysis and monitoring.
 #'
 #' This package provides the global production data from all fisheries and
 #' aquaculture in R format, ready for analysis.
@@ -31,26 +30,23 @@
 #'   \code{\link{status}}      \tab status of data entries
 #' }
 #'
-#' @note
-#' The data in the package were downloaded from the FAO
-#' \href{https://www.fao.org/fishery/static/Data/}{data server} and imported
-#' into R. The R package version indicates the version of FishStat data it
-#' includes. Column names have been simplified to facilitate quick exploration
-#' and plotting in R.
-#'
+#' @section Joining Tables:
 #' Production tables can be joined with lookup tables using the
 #' \code{\link{merge}} function, as demonstrated in the help page examples for
-#' production tables. The column names in the R package have been designed to
-#' allow automatic inference of which columns to join, and the resulting table
-#' will have unique column names.
+#' \code{\link{aquaculture}} and \code{\link{capture}} production. The column
+#' names in this package have been designed to allow automatic inference of
+#' which columns to join, and the resulting table will have unique column names.
 #'
-#' To achieve a small memory footprint and fast computations, one can filter or
-#' aggregate rows and select columns of interest before joining tables, as
-#' demonstrated in the \code{capture} and \code{production} examples. On the
-#' other hand, for the sake of convenience, one can also construct a full table
-#' with all data records and all columns. The resulting table will have many
-#' rows and columns, but most computers will handle these without
-#' problems:\preformatted{
+#' The \code{merge} function is generally useful for joining tables, but other
+#' join methods are available in R that can be faster but require either
+#' additional packages or more coding. The \code{\link{production}} example uses
+#' square brackets and the \code{match} function to add one lookup column at a
+#' time to the production table. Compared to the slower \code{merge} function,
+#' this saves time, both for users and CRAN servers running maintenance tests.
+#'
+#' Rather than optimizing speed or memory footprint, one can optimize
+#' convenience by constructing a full table with all data records and all
+#' columns:\preformatted{
 #' prod.all <- merge(merge(merge(merge(merge(merge(production,
 #'                   area), country), measure), source), species), status)
 #' cap.all <- merge(merge(merge(merge(merge(capture,
@@ -58,12 +54,21 @@
 #' aqua.all <- merge(merge(merge(merge(merge(merge(aquaculture,
 #'                   area), country), environment), measure), species), status)}
 #'
-#' When aggregating data, simple utility functions can be handy for tasks like
-#' rounding the sum of thousands/millions of tonnes:\preformatted{
-#' sum3 <- function(x, digits=0) round(sum(x)/1e3, digits=digits)
-#' sum6 <- function(x, digits=0) round(sum(x)/1e6, digits=digits)
-#' aggregate(value~environment, aquaculture, sum6)
-#' aggregate(value~area, capture, sum6, subset=measure=="Q_tlw", digits=1)}
+#' Popular paradigms for joining tables include:
+#' \itemize{
+#'   \item Base R, where \code{merge} returns a \code{data.frame}.
+#'   \item The \code{dplyr} package, where \code{inner_join} returns a
+#'         \code{tibble}.
+#'   \item The \code{data.table} package, where \code{merge} returns a
+#'         \code{data.table}.
+#' }
+#'
+#' @note
+#' The data in the package were downloaded from the FAO
+#' \href{https://www.fao.org/fishery/static/Data/}{data server} and imported
+#' into R. The R package version indicates the version of FishStat data it
+#' includes. Column names have been simplified to facilitate quick exploration
+#' and plotting in R.
 #'
 #' An effort has been made to describe each table in the corresponding R help
 #' page. However, the official and authoritative documentation of the FishStat
@@ -80,9 +85,8 @@
 #'
 #' All credit for the FishStat database goes to the Statistics Team of the FAO
 #' Fisheries and Aquaculture Division, as well as national data submitters. The
-#' database
-#' \href{https://www.fao.org/contact-us/terms/db-terms-of-use/en}{terms of use}
-#' are based on the
+#' database \href{https://www.fao.org/contact-us/terms/db-terms-of-use/en}{terms
+#' of use} are based on the
 #' \href{https://creativecommons.org/licenses/by-nc-sa/3.0/igo/}{CC BY-NC-SA 3.0
 #' IGO} license. The R package is released under a similar
 #' \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{CC BY-NC-SA 4.0}
@@ -102,6 +106,15 @@
 #' fishstat: Global Fishery and Aquaculture Statistics.
 #' R package version [Version].
 #' \url{https://cran.r-project.org/package=fishstat}.
+#'
+#' @seealso
+#' The package on CRAN provides the latest FishStat data, within a few weeks
+#' after the official FAO data release. For research and reference purposes,
+#' packages containing older data releases are available on GitHub with
+#' descriptive names such as fishstat21 and fishstat22, containing the FAO
+#' FishStat data releases from 2021 and 2022: \preformatted{
+#' install_github("https://github.com/sofia-taf/fishstat21")
+#' install_github("https://github.com/sofia-taf/fishstat22")}
 #'
 #' @examples
 #' head(production)
