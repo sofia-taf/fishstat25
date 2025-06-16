@@ -58,7 +58,7 @@
 #' # Only country and country_name are always defined
 #' cbind(sapply(country, function(x) all(x != "")))
 #'
-#' # Plus ecoclass and official for non-zero production
+#' # Columns defined for non-zero production
 #' cbind(sapply(country.nz, function(x) all(x != "")))
 #'
 #' # Economic class levels
