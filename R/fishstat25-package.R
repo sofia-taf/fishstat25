@@ -109,7 +109,7 @@
 #'
 #' @seealso
 #' The package on CRAN provides the latest FishStat data, within a few weeks
-#' after the official FAO data release. For research and reference purposes,
+#' after an official FAO data release. For research and reference purposes,
 #' packages containing older data releases are available on GitHub with
 #' descriptive names such as fishstat21 and fishstat22, containing the FAO
 #' FishStat data releases from 2021 and 2022: \preformatted{
