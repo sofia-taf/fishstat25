@@ -137,7 +137,7 @@
 #'
 #' # World capture fisheries and aquaculture production
 #' x <- xtabs(value~year+origin, aggregate(value~year+origin, prod, sum))
-#' x <- x[,c(2,1,4,3)] / 1e6
+#' x <- x / 1e6
 #' library(areaplot)
 #' areaplot(x, legend=TRUE, args.legend=list(x="topleft"), ylab="million tonnes")
 
